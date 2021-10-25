@@ -1,0 +1,4 @@
+interface IGhost
+{
+    void DoHover();
+}
