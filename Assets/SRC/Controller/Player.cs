@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+[RequireComponent(typeof(Hover_Mechanics))]
 public class Player : MonoBehaviour, IGhost
 {
 
 
     private Debug_Messages debug_messages;
+    private Hover_Mechanics hover_mechanics;
     Vector3 player_transform_vector;
 
 
@@ -15,12 +19,13 @@ public class Player : MonoBehaviour, IGhost
     void Start()
     {
         debug_messages = new Debug_Messages();
-        DoHover();   
+        hover_mechanics = GetComponent<Hover_Mechanics>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
+        DoHover();
         DoMovement();
     }
 
@@ -28,7 +33,7 @@ public class Player : MonoBehaviour, IGhost
     ///<summary>Do ghost hover with minimum and maximum height.</summary>
     public void DoHover()
     {
-        Debug.Log(debug_messages.Pass());
+        hover_mechanics.Bounce();
     }
 
 
